@@ -1,3 +1,5 @@
+import { LoadingAssetsGame } from './setting.js';
+
 class GameScene extends Phaser.Scene {
     constructor() {
         super({
@@ -5,8 +7,24 @@ class GameScene extends Phaser.Scene {
         });
     }
 
-    preload () {}
-    create () {}
+    preload () {
+        const assetsGame = new LoadingAssetsGame();
+        assetsGame.AddAssetsGame();
+    }
+
+    create () {
+        this.anims.create({
+            key: 'explosion',
+            frames: this.anims.generateFrameNumbers('explosion', {
+                start: 0,
+                end: 11
+            }),
+            frameRate: 20,
+            repeat: 0,
+            hideOnComplete: true
+        });
+    }
+
     update () {}
 }
 
